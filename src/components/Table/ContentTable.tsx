@@ -20,14 +20,14 @@ interface ContentTableDataProps {
 export function ContentTable() {
   return (
     <tr>
-      <td>
+      <td className="p-4 text-left">
         <div>Flag</div>
       </td>
-      <td>China</td>
-      <td>Capital</td>
-      <td>Populacão</td>
-      <td>Nome da Moeda</td>
-      <td>Idioma</td>
+      <td className="p-4 text-left">China</td>
+      <td className="p-4 text-left">Capital</td>
+      <td className="p-4 text-left">Populacão</td>
+      <td className="p-4 text-left">Nome da Moeda</td>
+      <td className="p-4 text-left">Idioma</td>
     </tr>
   )
 }
