@@ -1,10 +1,13 @@
+import { BrowserRouter } from 'react-router-dom'
 import { CountryContextProvider } from './context/countryContext'
-import { Home } from './pages/Home'
+import { Router } from './Route'
 
 export function App() {
   return (
     <CountryContextProvider>
-      <Home />
+      <BrowserRouter>
+        <Router />
+      </BrowserRouter>
     </CountryContextProvider>
   )
 }

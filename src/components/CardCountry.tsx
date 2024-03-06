@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import { CountriesData } from '../context/countryContext'
 
 interface ContentTableDataProps {
@@ -6,7 +7,10 @@ interface ContentTableDataProps {
 
 export function CardCountry({ data }: ContentTableDataProps) {
   return (
-    <div className="flex flex-col items-center justify-center p-3 rounded-[10px] bg-zinc-900 ">
+    <NavLink
+      to={`/country-page/${data.name.common.toLowerCase()}`}
+      className="flex flex-col items-center justify-center p-3 rounded-[10px] bg-zinc-900 "
+    >
       <div className="w-full min-h-40 max-h-40 mb-4">
         <img
           src={data?.flags.png}
@@ -55,6 +59,6 @@ export function CardCountry({ data }: ContentTableDataProps) {
           </span>
         </div>
       </div>
-    </div>
+    </NavLink>
   )
 }

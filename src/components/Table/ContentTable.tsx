@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import { CountriesData } from '../../context/countryContext'
 
 interface ContentTableDataProps {
@@ -8,13 +9,15 @@ export function ContentTable({ data }: ContentTableDataProps) {
   return (
     <tr>
       <td className="p-4 text-left">
-        <div className="w-12 h-8 rounded overflow-hidden">
-          <img
-            src={data?.flags.png}
-            alt={data.name.common}
-            className="w-full h-full object-cover"
-          />
-        </div>
+        <NavLink to={`/country-page/${data.name.common.toLowerCase()}`}>
+          <div className="w-12 h-8 rounded overflow-hidden">
+            <img
+              src={data?.flags.png}
+              alt={data.name.common}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </NavLink>
       </td>
       <td className="p-4 text-left truncate max-w-32">{data?.name.common}</td>
       <td className="p-4 text-left truncate max-w-32">
