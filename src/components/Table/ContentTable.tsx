@@ -1,20 +1,10 @@
-import { CountriesData, useCountry } from '../../context/countryContext'
+import { CountriesData } from '../../context/countryContext'
 
 interface ContentTableDataProps {
   data: CountriesData
 }
 
 export function ContentTable({ data }: ContentTableDataProps) {
-  const { loading } = useCountry()
-
-  if (loading) {
-    return (
-      <div>
-        <p>Carregando...</p>
-      </div>
-    )
-  }
-
   return (
     <tr key={data?.name.common}>
       <td className="p-4 text-left">
@@ -26,15 +16,15 @@ export function ContentTable({ data }: ContentTableDataProps) {
           />
         </div>
       </td>
-      <td className="p-4 text-left">{data?.name.common}</td>
-      <td className="p-4 text-left">
+      <td className="p-4 text-left truncate max-w-32">{data?.name.common}</td>
+      <td className="p-4 text-left truncate max-w-32">
         {data.capital !== undefined &&
           data?.capital.map((item) => <span key={item}>{item}</span>)}
       </td>
       <td className="p-4 text-left">
         {data.population.toLocaleString('pt-BR')}
       </td>
-      <td className="p-4 text-left">
+      <td className="p-4 text-left truncate max-w-32">
         {data.currencies !== undefined &&
           Object.values(data?.currencies).map((item, index, array) => (
             <span key={item.name}>
@@ -43,7 +33,7 @@ export function ContentTable({ data }: ContentTableDataProps) {
             </span>
           ))}
       </td>
-      <td className="p-4 text-left">
+      <td className="p-4 text-left truncate max-w-32">
         {data.languages !== undefined &&
           Object.values(data?.languages).map((item, index, array) => (
             <span key={item}>
