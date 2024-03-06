@@ -1,13 +1,14 @@
 import { useEffect } from 'react'
 import BgHero from '../assets/hero-image-wr.jpg'
 import { useCountry } from '../context/countryContext'
-import { useParams } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
 import { Badge } from '../components/Badge'
 import { InfoContent } from '../components/InfoContent'
+import { ChevronLeft } from 'lucide-react'
 
 export function CountryPage() {
   const { country } = useParams()
-  const { countryDetails, fetchCountry } = useCountry()
+  const { countryDetails, fetchCountry, loading } = useCountry()
 
   useEffect(() => {
     fetchCountry(country)
@@ -19,8 +20,13 @@ export function CountryPage() {
         <img className="w-full relative -z-10" src={BgHero} alt="" />
       </div>
       <main className="max-w-3xl px-4 py-10 -mt-20 mx-auto mb-8 bg-zinc-800 rounded-lg">
+        <NavLink to="/" className="flex items-center gap-2">
+          <ChevronLeft />
+          Voltar
+        </NavLink>
+
         <div className="flex flex-col items-center">
-          <div className="w-72 h-[11rem] rounded-xl overflow-hidden -mt-16">
+          <div className="w-72 h-[11rem] rounded-xl overflow-hidden -mt-24">
             <img
               src={countryDetails[0]?.flags.png}
               alt=""
@@ -73,7 +79,7 @@ export function CountryPage() {
                   )}
               </div>
             </InfoContent>
-            <InfoContent title="Moedas">
+            <InfoContent title="Continente">
               <div>
                 {countryDetails[0]?.continents.map((item, index, array) => (
                   <span key={item}>
