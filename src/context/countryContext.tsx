@@ -7,10 +7,13 @@ import {
 } from 'react'
 import { api } from '../lib/api'
 
-export interface CountriesData {
+export interface CountryData {
   name: {
     common: string
+    official: string
   }
+  continents: string[]
+  area: number
   population: number
   flags: {
     png: string
@@ -27,14 +30,17 @@ export interface CountriesData {
 }
 
 interface CountryContextType {
-  countries: CountriesData[]
+  countries: CountryData[]
+  fetchCountry: (name: string | undefined) => void
+  countryDetails: CountryData[]
   loading: boolean
 }
 
 const CountryContext = createContext({} as CountryContextType)
 
 export function CountryContextProvider({ children }: { children: ReactNode }) {
-  const [countries, setCountries] = useState<CountriesData[]>([])
+  const [countries, setCountries] = useState<CountryData[]>([])
+  const [countryDetails, setCountryDetails] = useState<CountryData[]>([])
   const [loading, setLoading] = useState(true)
 
   function fetchCountries() {
@@ -44,12 +50,20 @@ export function CountryContextProvider({ children }: { children: ReactNode }) {
     })
   }
 
+  function fetchCountry(name: string | undefined) {
+    api.get(`/v3.1/name/${name}?fullText=true`).then((response) => {
+      setCountryDetails(response.data)
+    })
+  }
+
   useEffect(() => {
     fetchCountries()
   }, [])
 
   return (
-    <CountryContext.Provider value={{ countries, loading }}>
+    <CountryContext.Provider
+      value={{ countries, loading, fetchCountry, countryDetails }}
+    >
       {children}
     </CountryContext.Provider>
   )
