@@ -6,7 +6,7 @@ interface ContentTableDataProps {
 
 export function ContentTable({ data }: ContentTableDataProps) {
   return (
-    <tr key={data?.name.common}>
+    <tr>
       <td className="p-4 text-left">
         <div className="w-12 h-8 rounded overflow-hidden">
           <img
