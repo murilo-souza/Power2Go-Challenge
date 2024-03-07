@@ -1,6 +1,7 @@
 import { InputHTMLAttributes } from 'react'
 import { Search } from 'lucide-react'
 
+// tipagem para poder usar os atributos do input
 type InputProps = InputHTMLAttributes<HTMLInputElement>
 
 export function Input({ ...rest }: InputProps) {

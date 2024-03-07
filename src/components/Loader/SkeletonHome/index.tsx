@@ -1,5 +1,6 @@
 import { SkeletonItem } from './SkeletonItem'
 
+// Skeleton loader para a tabela de países
 export function SkeletonHome() {
   return (
     <tr>

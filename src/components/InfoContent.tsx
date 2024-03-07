@@ -1,7 +1,9 @@
 import { ReactNode } from 'react'
 
+// tipagem para as propriedades do infoContent
 interface InfoContentProps {
   title: string
+  // children para poder incluir qualquer conteudo dentro do componente
   children: ReactNode
 }
 

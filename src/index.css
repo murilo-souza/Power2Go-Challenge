@@ -1,22 +1,29 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
+// define a cor de fundo e a font da aplicação
 body {
   background-color: rgb(24, 24, 27);
   font-family: 'Be Vietnam Pro'
 }
 
+
+// define a espessura da barra de rolagem
 ::-webkit-scrollbar {
   width: 8px;
 }
 
+
+// define a cor e formato thumb da barra de rolagem
 ::-webkit-scrollbar-thumb {
   background-color: #9ca3af;
   border-radius: 4px;
 }
 
+
+// define a cor de fundo da barra de rolagem
 ::-webkit-scrollbar-track {
   background: #52525b;
   overflow: hidden

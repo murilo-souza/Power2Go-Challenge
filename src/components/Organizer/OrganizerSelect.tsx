@@ -1,7 +1,9 @@
 import { SelectHTMLAttributes } from 'react'
 
+// tipagem para poder usar os atributos do select
 type SelectProps = SelectHTMLAttributes<HTMLSelectElement>
 
+// seleção do tipo de visualização tabela ou cartão
 export function OrganizerSelect({ ...rest }: SelectProps) {
   return (
     <select

@@ -1,10 +1,13 @@
 import { NavLink } from 'react-router-dom'
 import { CountryData } from '../context/countryContext'
 
+// tipagem para as propriedades do CardCountry
 interface ContentTableDataProps {
   data: CountryData
 }
 
+// componente para o card de cada país
+// carrega os dados vindo do contexto
 export function CardCountry({ data }: ContentTableDataProps) {
   return (
     <NavLink
@@ -26,6 +29,7 @@ export function CardCountry({ data }: ContentTableDataProps) {
         <div className="flex items-center justify-between border-b border-zinc-700">
           <span>Capital</span>
           <span className="truncate max-w-32">
+            {/* Faz a validação se o item é undefined */}
             {data.capital !== undefined &&
               data?.capital.map((item) => <span key={item}>{item}</span>)}
           </span>
@@ -37,6 +41,7 @@ export function CardCountry({ data }: ContentTableDataProps) {
         <div className="flex items-center justify-between border-b border-zinc-700">
           <span>Moeda</span>
           <span className="truncate max-w-32">
+            {/* Faz a validação se o item é undefined */}
             {data.currencies !== undefined &&
               Object.values(data?.currencies).map((item, index, array) => (
                 <span key={item.name}>
@@ -49,6 +54,7 @@ export function CardCountry({ data }: ContentTableDataProps) {
         <div className="flex items-center justify-between border-b border-zinc-700">
           <span>Idioma</span>
           <span className="truncate max-w-32">
+            {/* Faz a validação se o item é undefined */}
             {data.languages !== undefined &&
               Object.values(data?.languages).map((item, index, array) => (
                 <span key={item}>

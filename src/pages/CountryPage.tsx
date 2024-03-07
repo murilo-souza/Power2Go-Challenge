@@ -8,9 +8,10 @@ import { ChevronLeft } from 'lucide-react'
 import { SkeletonCountryPage } from '../components/Loader/SkeletonCountryPage'
 
 export function CountryPage() {
-  const { country } = useParams()
-  const { countryDetails, fetchCountry, loading } = useCountry()
+  const { country } = useParams() // pega o nome do país informado na rota
+  const { countryDetails, fetchCountry, loading } = useCountry() // pega os dados do contexto
 
+  // faz o fetch dos dados conforme o país informado pelo useParams
   useEffect(() => {
     fetchCountry(country)
   }, [country])
@@ -66,6 +67,7 @@ export function CountryPage() {
               </InfoContent>
               <InfoContent title="Idiomas">
                 <div>
+                  {/* Faz a validação se o item é undefined */}
                   {countryDetails[0]?.languages !== undefined &&
                     Object.values(countryDetails[0]?.languages).map(
                       (item, index, array) => (
@@ -79,6 +81,7 @@ export function CountryPage() {
               </InfoContent>
               <InfoContent title="Moedas">
                 <div>
+                  {/* Faz a validação se o item é undefined */}
                   {countryDetails[0]?.currencies !== undefined &&
                     Object.values(countryDetails[0]?.currencies).map(
                       (item, index, array) => (

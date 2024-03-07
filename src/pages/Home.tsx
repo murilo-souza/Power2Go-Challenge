@@ -11,8 +11,13 @@ import Papa from 'papaparse'
 import { SkeletonHome } from '../components/Loader/SkeletonHome'
 
 export function Home() {
+  // hook para buscar os dados com o contexto
   const { countries, loading } = useCountry()
+
+  // estado para armazenar o campo de busca
   const [search, setSearch] = useState('')
+
+  // estado para armazenar o historico de busca, puxando os dados do localStorage caso haja dados
   const [historySearch, setHistorySearch] = useState<string[]>(() => {
     const historyOnStorage = localStorage.getItem('history')
 
@@ -23,17 +28,27 @@ export function Home() {
     return []
   })
 
+  // filtra os dados de acordo com o campo de busca para depois exportar em csv
+  const searchDataToExport = countries.filter((item) => {
+    return item.name.common.toLowerCase().includes(search.toLowerCase())
+  })
+
+  // define o tipo de vizualização tabela ou cartão
   const [viewType, setViewType] = useState<string>('table')
 
+  // função para executar a busca
   function handleSearch(event: FormEvent) {
+    // Previne o redirecionamento padrão do formulário
     event.preventDefault()
 
+    // adiciona ao histórico apenas se o campo de busca tiver algo
     if (search !== '') {
       addToHistory(search)
       executeSearch(search)
     }
   }
 
+  // adiciona novos itens ao histórico de busca
   function addToHistory(query: string) {
     const history = [query, ...historySearch]
 
@@ -42,16 +57,14 @@ export function Home() {
     localStorage.setItem('history', JSON.stringify(history))
   }
 
+  // função para executar a busca de acordo com o histórico de busca
   function executeSearch(query: string) {
     setSearch(query)
   }
 
-  function exportToCSV(data: any) {
-    const searchData = data.filter((item) => {
-      return item.name.common.toLowerCase().includes(search.toLowerCase())
-    })
-
-    const csv = Papa.unparse(searchData)
+  // função para exportar os dados para o CSV
+  function exportToCSV() {
+    const csv = Papa.unparse(searchDataToExport)
 
     const csvData = new Blob([csv], { type: 'text/csv;charset=utf-8;' })
     const csvURL = window.URL.createObjectURL(csvData)
@@ -72,6 +85,7 @@ export function Home() {
       <main className="max-w-7xl lg:min-h-[85vh] lg:max-h-[85vh] px-4 py-10 lg:-mt-20 -mt-40 mx-auto mb-8 bg-zinc-800 rounded-lg">
         <header className="lg:flex lg:items-center lg:justify-between mb-8">
           <span className="font-semibold text-zinc-400 text-xl">
+            {/* define a quantidade de países de acordo com a busca */}
             {
               countries.filter((item) =>
                 item.name.common.toLowerCase().includes(search.toLowerCase()),
@@ -125,15 +139,17 @@ export function Home() {
               <button
                 className="p-4 bg-zinc-900 rounded-lg text-sm disabled:opacity-50"
                 disabled={loading}
-                onClick={() => exportToCSV(countries)}
+                onClick={exportToCSV}
               >
                 Exportar dados em CSV
               </button>
             </OrganizerWrapper>
           </section>
           <section className="min-h-[65vh] max-h-[65vh] overflow-y-auto">
+            {/* define o tipo de vizualização tabela ou cartão de acordo como viewType */}
             {viewType === 'table' ? (
               <HeaderTable>
+                {/* define o carregamento dos dados */}
                 {loading ? (
                   <>
                     <SkeletonHome />

@@ -1,6 +1,7 @@
 import { SkeletonBadge } from './SkeletonBadge'
 import { SkeletonItem } from './SkeletonItem'
 
+// Skeleton loader para a página de um país
 export function SkeletonCountryPage() {
   return (
     <div className="flex flex-col items-center">

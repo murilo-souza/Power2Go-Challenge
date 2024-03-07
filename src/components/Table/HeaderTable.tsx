@@ -1,6 +1,8 @@
 import { ReactNode } from 'react'
 
+// tipagem para as propriedades do HeaderTable
 interface HeaderTableProps {
+  // children para poder incluir qualquer conteudo dentro do componente
   children: ReactNode
 }
 

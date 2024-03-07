@@ -1,3 +1,6 @@
+// componente para mostrar os dados de população e area do país
+
+// tipagem para as propriedades do Badge
 interface BadgeProps {
   title: string
   value: number
