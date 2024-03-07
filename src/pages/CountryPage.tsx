@@ -17,11 +17,18 @@ export function CountryPage() {
 
   return (
     <>
-      <div className="w-full">
-        <img className="w-full relative -z-10" src={BgHero} alt="" />
+      <div className="w-full h-[30rem] lg:h-[40vh]">
+        <img
+          className="w-full h-full object-cover relative -z-10"
+          src={BgHero}
+          alt=""
+        />
       </div>
-      <main className="max-w-3xl px-4 py-10 -mt-20 mx-auto mb-8 bg-zinc-800 rounded-lg">
-        <NavLink to="/" className="flex items-center gap-2">
+      <main className="max-w-3xl px-4 py-10 lg:-mt-20 -mt-40 lg:mx-auto mb-8 bg-zinc-800 rounded-lg mx-5 ">
+        <NavLink
+          to="/"
+          className="lg:flex lg:items-center lg:gap-2 hidden hover:underline"
+        >
           <ChevronLeft />
           Voltar
         </NavLink>
@@ -40,7 +47,7 @@ export function CountryPage() {
               />
             </div>
 
-            <div className="flex items-center gap-8 my-8">
+            <div className="lg:flex flex-col lg:flex-row items-center lg:gap-8 my-8">
               <Badge title="Population" value={countryDetails[0]?.population} />
               <Badge title="Area (km²)" value={countryDetails[0]?.area} />
             </div>
@@ -94,6 +101,13 @@ export function CountryPage() {
                 </div>
               </InfoContent>
             </div>
+            <NavLink
+              to="/"
+              className="flex items-center gap-2 lg:hidden hover:underline"
+            >
+              <ChevronLeft />
+              Voltar
+            </NavLink>
           </div>
         )}
       </main>

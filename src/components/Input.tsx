@@ -9,7 +9,7 @@ export function Input({ ...rest }: InputProps) {
       <Search size={20} className="text-zinc-400" />
       <input
         {...rest}
-        className="bg-transparent max-w-80 h-6 text-zinc-100 ml-4 outline-none min-w-80"
+        className="bg-transparent lg:max-w-80  h-6 text-zinc-100 ml-4 outline-none lg:min-w-80"
       />
     </div>
   )

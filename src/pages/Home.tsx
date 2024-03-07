@@ -58,11 +58,15 @@ export function Home() {
   }
   return (
     <>
-      <div className="w-full">
-        <img className="w-full relative -z-10" src={BgHero} alt="" />
+      <div className="w-full h-[30rem] lg:h-[40vh]">
+        <img
+          className="w-full h-full object-cover relative -z-10"
+          src={BgHero}
+          alt=""
+        />
       </div>
-      <main className="max-w-7xl min-h-[85vh] max-h-[85vh] px-4 py-10 -mt-20 mx-auto mb-8 bg-zinc-800 rounded-lg">
-        <header className="flex items-center justify-between mb-8">
+      <main className="max-w-7xl lg:min-h-[85vh] lg:max-h-[85vh] px-4 py-10 lg:-mt-20 -mt-40 mx-auto mb-8 bg-zinc-800 rounded-lg">
+        <header className="lg:flex lg:items-center lg:justify-between mb-8">
           <span className="font-semibold text-zinc-400 text-xl">
             {
               countries.filter((item) =>
@@ -72,7 +76,10 @@ export function Home() {
             países encontrados
           </span>
 
-          <form onSubmit={handleSearch} className="flex items-center gap-4">
+          <form
+            onSubmit={handleSearch}
+            className="flex items-center gap-4 mt-8 lg:mt-0"
+          >
             <Input
               placeholder="Pesquise um país pelo nome"
               value={search}
@@ -83,8 +90,8 @@ export function Home() {
             </button>
           </form>
         </header>
-        <div className="grid grid-cols-table gap-8">
-          <section className="border-r-2 border-zinc-700 pr-4">
+        <div className="lg:grid lg:grid-cols-table flex flex-col gap-8">
+          <section className="lg:border-r-2 lg:border-zinc-700 lg:pr-4">
             <OrganizerWrapper title="Organizada por">
               <OrganizerSelect
                 value={viewType}
@@ -140,7 +147,7 @@ export function Home() {
                 )}
               </HeaderTable>
             ) : (
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid lg:grid-cols-3 lg:gap-2 gap-7 grid-cols-1">
                 {countries
                   .filter((item) =>
                     item.name.common

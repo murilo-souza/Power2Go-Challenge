@@ -6,7 +6,7 @@ export function SkeletonCountryPage() {
     <div className="flex flex-col items-center">
       <div className="w-72 h-[11rem] rounded-xl overflow-hidden -mt-24 bg-zinc-600 animate-pulse"></div>
 
-      <div className="flex items-center gap-8 my-8">
+      <div className="lg:flex flex-col lg:flex-row items-center lg:gap-8 my-8">
         <SkeletonBadge />
         <SkeletonBadge />
       </div>
