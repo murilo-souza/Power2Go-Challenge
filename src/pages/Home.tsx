@@ -161,7 +161,7 @@ export function Home() {
                 disabled={loading}
                 onClick={exportToCSV}
               >
-                Exportar dados em CSV
+                Exportar dados dados da pesquisa
               </button>
             </OrganizerWrapper>
           </section>
