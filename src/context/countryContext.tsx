@@ -44,18 +44,24 @@ export function CountryContextProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true)
 
   function fetchCountries() {
-    api.get('/v3.1/all').then((response) => {
-      setCountries(response.data)
-      setLoading(false)
-    })
+    api
+      .get('/v3.1/all')
+      .then((response) => {
+        setCountries(response.data)
+        setLoading(false)
+      })
+      .catch(() => alert('Erro ao carregar os países'))
   }
 
   function fetchCountry(name: string | undefined) {
     setLoading(true)
-    api.get(`/v3.1/name/${name}?fullText=true`).then((response) => {
-      setCountryDetails(response.data)
-      setLoading(false)
-    })
+    api
+      .get(`/v3.1/name/${name}?fullText=true`)
+      .then((response) => {
+        setCountryDetails(response.data)
+        setLoading(false)
+      })
+      .catch(() => alert('Erro ao carregar o país'))
   }
 
   useEffect(() => {
