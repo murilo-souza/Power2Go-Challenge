@@ -61,12 +61,17 @@ export function CountryPage() {
                 <span>{countryDetails[0]?.name.official}</span>
               </InfoContent>
               <InfoContent title="Capital">
-                {countryDetails[0]?.capital.map((item) => (
-                  <span key={item}>{item}</span>
-                ))}
+                <div className="max-w-[70%]">
+                  {countryDetails[0]?.capital.map((item, index, array) => (
+                    <span key={item}>
+                      {item}
+                      {index !== array.length - 1 && ', '}
+                    </span>
+                  ))}
+                </div>
               </InfoContent>
               <InfoContent title="Idiomas">
-                <div>
+                <div className="max-w-[70%]">
                   {/* Faz a validação se o item é undefined */}
                   {countryDetails[0]?.languages !== undefined &&
                     Object.values(countryDetails[0]?.languages).map(
@@ -80,7 +85,7 @@ export function CountryPage() {
                 </div>
               </InfoContent>
               <InfoContent title="Moedas">
-                <div>
+                <div className="max-w-[70%]">
                   {/* Faz a validação se o item é undefined */}
                   {countryDetails[0]?.currencies !== undefined &&
                     Object.values(countryDetails[0]?.currencies).map(
