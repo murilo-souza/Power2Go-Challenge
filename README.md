@@ -21,10 +21,10 @@ Siga os passos abaixo para executar o projeto em sua máquina local:
    ```bash
    npm install
    
-3. **Instale as dependências:**
+4. **Inicie o servidor de desenvolvimento:**
    <br/>
    Após a instalação das dependências, inicie o servidor de desenvolvimento executando:
-    <br/>
+   <br/>
    ```bash
    npm run dev
    ```
