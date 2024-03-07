@@ -106,7 +106,7 @@ export function Home() {
             />
             <button
               type="submit"
-              className="p-3 bg-zinc-900 rounded-lg disabled:opacity-50"
+              className="lg:p-3 p-2 bg-zinc-900 rounded-lg disabled:opacity-50"
               disabled={loading}
             >
               Salvar pesquisa
