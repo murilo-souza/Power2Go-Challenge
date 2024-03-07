@@ -45,6 +45,12 @@ Siga os passos abaixo para executar o projeto em sua máquina local:
    - Os usuários têm a opção de exportar os dados dos países em formato CSV para uso externo ou análise.
 
 5. **Navegação para Detalhes de um País Específico:**
-   - A aplicação permite aos usuários navegar para uma página específica para visualizar detalhes mais abrangentes de um país específico.
+   - A aplicação permite aos usuários navegar para a página do país selecionado para visualizar detalhes mais abrangentes.
+   - A navegação é realizada de forma intuitiva, bastando clicar na bandeira do país de interesse para acessar os detalhes completos.
+   - 
+6. **Responsividade:**
+   - A aplicação é responsiva, adaptando-se de forma adequada a diferentes tamanhos de tela e dispositivos, proporcionando uma experiência consistente e amigável para todos os usuários.
 
+7. **Skeleton Loader:**
+   - Implementado um skeleton loader para melhorar a experiência do usuário durante o carregamento de dados. Isso proporciona uma visualização temporária de como a página será apresentada, enquanto os dados estão sendo carregados.
    
