@@ -1,8 +1,8 @@
 import { NavLink } from 'react-router-dom'
-import { CountriesData } from '../context/countryContext'
+import { CountryData } from '../context/countryContext'
 
 interface ContentTableDataProps {
-  data: CountriesData
+  data: CountryData
 }
 
 export function CardCountry({ data }: ContentTableDataProps) {
