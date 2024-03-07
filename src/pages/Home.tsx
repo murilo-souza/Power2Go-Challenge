@@ -8,6 +8,7 @@ import { useCountry } from '../context/countryContext'
 import { FormEvent, useState } from 'react'
 import { CardCountry } from '../components/CardCountry'
 import Papa from 'papaparse'
+import { SkeletonHome } from '../components/Loader/SkeletonHome'
 
 export function Home() {
   const { countries, loading } = useCountry()
@@ -116,7 +117,14 @@ export function Home() {
             {viewType === 'table' ? (
               <HeaderTable>
                 {loading ? (
-                  <p>Carregando...</p>
+                  <>
+                    <SkeletonHome />
+                    <SkeletonHome />
+                    <SkeletonHome />
+                    <SkeletonHome />
+                    <SkeletonHome />
+                    <SkeletonHome />
+                  </>
                 ) : (
                   <>
                     {countries

@@ -51,8 +51,10 @@ export function CountryContextProvider({ children }: { children: ReactNode }) {
   }
 
   function fetchCountry(name: string | undefined) {
+    setLoading(true)
     api.get(`/v3.1/name/${name}?fullText=true`).then((response) => {
       setCountryDetails(response.data)
+      setLoading(false)
     })
   }
 
