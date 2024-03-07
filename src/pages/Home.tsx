@@ -46,8 +46,12 @@ export function Home() {
     setSearch(query)
   }
 
-  function exportToCSV(data: unknown[]) {
-    const csv = Papa.unparse(data)
+  function exportToCSV(data: any) {
+    const searchData = data.filter((item) => {
+      return item.name.common.toLowerCase().includes(search.toLowerCase())
+    })
+
+    const csv = Papa.unparse(searchData)
 
     const csvData = new Blob([csv], { type: 'text/csv;charset=utf-8;' })
     const csvURL = window.URL.createObjectURL(csvData)
@@ -84,8 +88,13 @@ export function Home() {
               placeholder="Pesquise um país pelo nome"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
+              disabled={loading}
             />
-            <button type="submit" className="p-3 bg-zinc-900 rounded-lg">
+            <button
+              type="submit"
+              className="p-3 bg-zinc-900 rounded-lg disabled:opacity-50"
+              disabled={loading}
+            >
               Salvar pesquisa
             </button>
           </form>
@@ -96,6 +105,7 @@ export function Home() {
               <OrganizerSelect
                 value={viewType}
                 onChange={(e) => setViewType(e.target.value)}
+                disabled={loading}
               />
             </OrganizerWrapper>
             {historySearch.length > 0 && (
@@ -113,7 +123,8 @@ export function Home() {
             )}
             <OrganizerWrapper title="Exportar dados">
               <button
-                className="p-3 bg-zinc-900 rounded-lg"
+                className="p-4 bg-zinc-900 rounded-lg text-sm disabled:opacity-50"
+                disabled={loading}
                 onClick={() => exportToCSV(countries)}
               >
                 Exportar dados em CSV
