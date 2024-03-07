@@ -29,9 +29,6 @@ export function Home() {
   })
 
   // filtra os dados de acordo com o campo de busca para depois exportar em csv
-  const searchDataToExport = countries.filter((item) => {
-    return item.name.common.toLowerCase().includes(search.toLowerCase())
-  })
 
   // define o tipo de vizualização tabela ou cartão
   const [viewType, setViewType] = useState<string>('table')
@@ -64,7 +61,30 @@ export function Home() {
 
   // função para exportar os dados para o CSV
   function exportToCSV() {
-    const csv = Papa.unparse(searchDataToExport)
+    // filtra os dados de acordo com o campo de busca para depois exportar em csv
+    const searchData = countries.filter((item) => {
+      return item.name.common.toLowerCase().includes(search.toLowerCase())
+    })
+
+    // filtra os dados vindos da api para depois exportar em csv
+    const dataToExport = searchData.map((item) => ({
+      name: item.name.common,
+      officialName: item.name.official,
+      capital: item.capital !== undefined && item.capital[0],
+      population: item.population,
+      area: item.area,
+      flag: item.flags.png,
+      languages:
+        item.languages !== undefined &&
+        Object.values(item.languages).join(', '),
+      currencies:
+        item.currencies !== undefined &&
+        Object.values(item.currencies)
+          .map((currency) => currency.name)
+          .join(', '),
+    }))
+
+    const csv = Papa.unparse(dataToExport)
 
     const csvData = new Blob([csv], { type: 'text/csv;charset=utf-8;' })
     const csvURL = window.URL.createObjectURL(csvData)
